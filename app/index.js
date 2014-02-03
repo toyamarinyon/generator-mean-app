@@ -91,5 +91,5 @@ MeanAppGenerator.prototype.copyConfigFile = function copyConfigFile() {
 };
 
 MeanAppGenerator.prototype.copyServer = function copyServer() {
-  this.copy('_server.coffee', 'app/src/server/server.coffee');
+  this.copy('app/server/server.coffee', 'app/src/server/server.coffee');
 };
