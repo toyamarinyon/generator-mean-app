@@ -89,3 +89,7 @@ MeanAppGenerator.prototype.copyConfigFile = function copyConfigFile() {
   this.template('_bower.json', 'bower.json');
   this.template('_gruntfile.coffee', 'gruntfile.coffee');
 };
+
+MeanAppGenerator.prototype.copyServer = function copyServer() {
+  this.copy('_server.coffee', 'app/src/server/server.coffee');
+};
