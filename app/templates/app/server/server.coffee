@@ -6,6 +6,7 @@ express  = require("express")
 fs       = require("fs")
 passport = require("passport")
 logger   = require("mean-logger")
+io       = require("socket.io")
 
 
 ###
@@ -32,9 +33,13 @@ require("./config/passport")(passport)
 
 # Bootstrap routes
 require("./config/routes")
+require("./config/sockets")
 
 # Create Express
 app = express()
+
+# Hook Socket.io into Express
+io.listen(app)
 
 # Express settings
 require("./config/express")(app, passport, db, config)
@@ -43,6 +48,9 @@ require("./config/express")(app, passport, db, config)
 port = process.env.PORT || config.port;
 app.listen port
 console.log "Express app started on port " + port
+
+# Socket.io Communication
+io.sockets.on("connection", socket)
 
 # Initializing logger
 logger.init app, passport, mongoose
