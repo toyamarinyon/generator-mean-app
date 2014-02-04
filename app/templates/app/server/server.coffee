@@ -37,7 +37,7 @@ require("./config/routes")
 app = express()
 
 # Express settings
-require("./config/express")(app, passport, db)
+require("./config/express")(app, passport, db, config)
 
 # Start the app by listening on <port>
 port = process.env.PORT || config.port;

@@ -7,10 +7,8 @@ Module dependencies.
 express    = require("express")
 mongoStore = require("connect-mongo")(express)
 flash      = require("connect-flash")
-helpers    = require("view-helpers")
-config     = require("./config")
 
-module.exports = (app, passport, db) ->
+module.exports = (app, passport, db, config) ->
   app.set "showStackError", true
 
   # Prettify HTML

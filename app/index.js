@@ -95,6 +95,7 @@ MeanAppGenerator.prototype.copyServer = function copyServer() {
   this.copy('app/server/config/common.coffee'          , 'app/src/server/config/common.coffee');
   this.copy('app/server/config/express.coffee'         , 'app/src/server/config/express.coffee');
   this.copy('app/server/config/passport.coffee'        , 'app/src/server/config/passport.coffee');
+  this.copy('app/server/config/routes.coffee'          , 'app/src/server/config/routes.coffee');
   this.copy('app/server/config/env/development.coffee' , 'app/src/server/config/env/development.coffee');
   this.copy('app/server/config/env/test.coffee'        , 'app/src/server/config/env/test.coffee');
   this.copy('app/server/config/env/production.coffee'  , 'app/src/server/config/env/production.coffee');
