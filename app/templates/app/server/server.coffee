@@ -24,8 +24,14 @@ mongoose = require("mongoose")
 # Bootstrap db connection
 db = mongoose.connect config.db
 
+# Bootstrap models
+require("./models")
+
 # Bootstrap passport config
 require("./config/passport")(passport)
+
+# Bootstrap routes
+require("./config/routes")
 
 # Create Express
 app = express()

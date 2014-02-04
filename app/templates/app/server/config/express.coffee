@@ -3,6 +3,7 @@
 ###
 Module dependencies.
 ###
+
 express    = require("express")
 mongoStore = require("connect-mongo")(express)
 flash      = require("connect-flash")

@@ -3,9 +3,10 @@
 ###
 Module dependencies.
 ###
-User             = mongoose.model('User')
-LocalStrategy    = require('passport-local').Strategy
-FacebookStrategy = require('passport-facebook').Strategy
+
+User             = mongoose.model("User")
+LocalStrategy    = require("passport-local").Strategy
+FacebookStrategy = require("passport-facebook").Strategy
 
 module.exports = (passport, config) ->
 
@@ -17,7 +18,7 @@ module.exports = (passport, config) ->
   passport.deserializeUser (id, done) ->
     User.findOne
       _id: id
-    , '-salt -hashed_password'
+    , "-salt -hashed_password"
     , (err, user) ->
       done(err, user)
 
@@ -28,7 +29,7 @@ module.exports = (passport, config) ->
     callbackURL  : "http://#{config.hostname}/auth/facebook/callback"
   , (accessToken, refreshToken, profile, done) ->
     User.findOne
-      'facebook.id': profile.id
+      "facebook.id": profile.id
     , (err, user) ->
       return done(err) if err
 
