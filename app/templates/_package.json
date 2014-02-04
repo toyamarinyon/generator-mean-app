@@ -54,8 +54,8 @@
     "grunt-contrib-jshint": "~0.8.0",
     "grunt-nodemon": "0.1.2",
     "grunt-contrib-watch": "~0.5.3",
-    "require-directory": "~0.5.3",
-    "karma-coverage": "~1.2.0",
+    "require-directory": "~1.2.0",
+    "karma-coverage": "~0.1.4",
     "karma": "~0.10.9"
   },
   "devDependencies": {

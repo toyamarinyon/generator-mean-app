@@ -1,6 +1,6 @@
 {
   "name": "generator-mean-app",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "MEAN stack application generator",
   "keywords": [
     "yeoman-generator","mean","mean stack","toyamarinyon"
