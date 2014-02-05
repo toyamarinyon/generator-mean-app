@@ -1,6 +1,6 @@
 "use strict"
 
-myApp.factory "socket" ($rootScope) ->
+app.factory "socket", ($rootScope) ->
   socket = io.connect()
   socketService =
     on: (eventName, callback) ->

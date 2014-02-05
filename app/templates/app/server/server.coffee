@@ -45,7 +45,7 @@ io.listen(app)
 require("./config/express")(app, passport, db, config)
 
 # Start the app by listening on <port>
-port = process.env.PORT || config.port;
+port = process.env.PORT || config.port
 app.listen port
 console.log "Express app started on port " + port
 

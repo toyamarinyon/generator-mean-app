@@ -1,10 +1,13 @@
-directoryConfig = {
+directoryConfig =
   appSrc: 'app/src'
   appDist: 'app/dist'
-}
+
+fileConfig =
+  clientConfig: "#{directoryConfig.appSrc}/client/config/application.coffee"
 
 module.exports = (grunt) ->
   grunt.initConfig
+    pkg: grunt.file.readJSON('package.json'),
     watch:
       options:
         livereload: true
@@ -31,6 +34,10 @@ module.exports = (grunt) ->
 
     jade:
       compile:
+        options:
+          pretty: true
+          data: ->
+            require("./package.json")
         files: [
           expand: true
           cwd: directoryConfig.appSrc
@@ -40,6 +47,8 @@ module.exports = (grunt) ->
         ]
 
     coffee:
+      options:
+        bare: true
       compile:
         files: [
           expand: true
@@ -69,6 +78,7 @@ module.exports = (grunt) ->
           src: '**/*.png'
           dest: directoryConfig.appDist
         ]
+    
 
   grunt.loadNpmTasks 'grunt-contrib-watch'
   grunt.loadNpmTasks 'grunt-contrib-jade'
@@ -78,6 +88,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-watch'
 
   grunt.registerTask 'build', [
+    'config'
     'jade'
     'coffee'
     'sass'
@@ -85,3 +96,10 @@ module.exports = (grunt) ->
   ]
   grunt.registerTask 'watching', ['watch']
   grunt.registerTask 'default', ['build']
+  grunt.registerTask 'config', 'build client config from package.json', ->
+    grunt.file.delete fileConfig.clientConfig
+    config = """
+             APPLICATION =
+               NAME: "#{grunt.config('pkg').name}"
+             """
+    grunt.file.write fileConfig.clientConfig, config

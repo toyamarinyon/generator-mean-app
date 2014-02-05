@@ -1,6 +1,6 @@
 "use strict"
 
-myApp = angular.module("myApp", [])
+app = angular.module(APPLICATION.NAME, [])
   .config ($routeProvider) ->
     $routeProvider
       .when "/",
@@ -8,5 +8,3 @@ myApp = angular.module("myApp", [])
         controller : "IndexController"
       .otherwise "/",
         redirectTo: "/"
-
-

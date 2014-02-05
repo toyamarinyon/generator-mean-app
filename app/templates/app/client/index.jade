@@ -1,0 +1,21 @@
+doctype html
+html(ng-app="#{name}")
+  head
+    title "#{name}"
+    link(rel='stylesheet', href='/lib/font-awesome/css/font-awesome.min.css')
+    link(rel='stylesheet', href='/lib/bootstrap/dist/css/bootstrap.min.css')
+
+  body
+
+    // Module dependencies.
+	each module in dependencyModules
+	  script(src="#{module.src}")
+    
+    // Const
+    script(type='text/javascript', src='/config/application.js')
+    // Initializing
+    script(type='text/javascript', src='/bootstrap.js')
+    // Load services
+    script(type='text/javascript', src='/services/socket.js')
+    // Load controllers
+    script(type='text/javascript', src='/controllers/index.js')

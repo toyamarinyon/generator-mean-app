@@ -87,6 +87,7 @@ MeanAppGenerator.prototype.generateDirectoryHierarchy = function generateDirecto
 MeanAppGenerator.prototype.copyConfigFile = function copyConfigFile() {
   this.template('_package.json', 'package.json');
   this.template('_bower.json', 'bower.json');
+  this.template('_bowerrc', '.bowerrc');
   this.template('_gruntfile.coffee', 'gruntfile.coffee');
 };
 
@@ -102,8 +103,10 @@ MeanAppGenerator.prototype.copyServer = function copyServer() {
   this.copy('app/server/config/env/production.coffee'  , 'app/src/server/config/env/production.coffee');
 
 };
+
 MeanAppGenerator.prototype.copyClient = function copyClient() {
-  this.copy('app/client/client.coffee'                 , 'app/src/client/client.coffee');
+  this.copy('app/client/bootstrap.coffee'              , 'app/src/client/bootstrap.coffee');
   this.copy('app/client/controllers/index.coffee'      , 'app/src/client/controllers/index.coffee');
   this.copy('app/client/services/socket.coffee'        , 'app/src/client/services/socket.coffee');
+  this.copy('app/client/index.jade'                    , 'app/src/client/index.jade');
 };
