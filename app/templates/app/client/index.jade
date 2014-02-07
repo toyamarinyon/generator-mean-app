@@ -8,8 +8,8 @@ html(ng-app="#{name}")
   body
 
     // Module dependencies.
-	each module in dependencyModules
-	  script(src="#{module.src}")
+    each module in dependency.scripts
+      script(src="#{module.dist}")
     
     // Const
     script(type='text/javascript', src='/config/application.js')

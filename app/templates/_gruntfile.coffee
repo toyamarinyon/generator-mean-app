@@ -37,7 +37,8 @@ module.exports = (grunt) ->
         options:
           pretty: true
           data: ->
-            require("./package.json")
+            package: require("./package.json")
+            dependency: require("./app/src/client/config/dependencies")
         files: [
           expand: true
           cwd: directoryConfig.appSrc

@@ -1,2 +1,0 @@
-APPLICATION =
-  NAME: "test"

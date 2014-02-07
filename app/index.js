@@ -106,6 +106,7 @@ MeanAppGenerator.prototype.copyServer = function copyServer() {
 
 MeanAppGenerator.prototype.copyClient = function copyClient() {
   this.copy('app/client/bootstrap.coffee'              , 'app/src/client/bootstrap.coffee');
+  this.copy('app/client/config/dependencies.coffee'    , 'app/src/client/config/dependencies.coffee');
   this.copy('app/client/controllers/index.coffee'      , 'app/src/client/controllers/index.coffee');
   this.copy('app/client/services/socket.coffee'        , 'app/src/client/services/socket.coffee');
   this.copy('app/client/index.jade'                    , 'app/src/client/index.jade');
