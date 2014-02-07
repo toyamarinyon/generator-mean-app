@@ -22,14 +22,15 @@ process.env.NODE_ENV = process.env.NODE_ENV || "development"
 config   = require("./config/common")
 mongoose = require("mongoose")
 
+console.log config.db
 # Bootstrap db connection
 db = mongoose.connect config.db
 
 # Bootstrap models
-require("./models")
+require("./models/user")
 
 # Bootstrap passport config
-require("./config/passport")(passport)
+require("./config/passport")(passport, config)
 
 # Bootstrap routes
 require("./config/routes")
@@ -37,23 +38,23 @@ require("./config/sockets")
 
 # Create Express
 app = express()
+require("./config/express")(app, passport, db, config)
+server = require("http").createServer(app)
 
 # Hook Socket.io into Express
-io.listen(app)
-
-# Express settings
-require("./config/express")(app, passport, db, config)
+io     = require("socket.io").listen(server)
 
 # Start the app by listening on <port>
 port = process.env.PORT || config.port
-app.listen port
+server.listen port
 console.log "Express app started on port " + port
 
 # Socket.io Communication
-io.sockets.on("connection", socket)
+socketRoutes = require("./config/sockets")
+io.sockets.on("connection", socketRoutes)
 
 # Initializing logger
 logger.init app, passport, mongoose
 
 # Expose app
-exports = module.exports = app
+exports = module.exports = server

@@ -39,7 +39,7 @@ module.exports = (app, passport, db, config) ->
     # Express/Mongo session storage
     app.use express.session
       secret: config.sessionSecret
-      store: new MongoStore
+      store: new mongoStore
         db: db.connection.db
         collection: config.sessionCollection
 

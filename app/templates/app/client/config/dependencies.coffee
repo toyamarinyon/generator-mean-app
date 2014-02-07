@@ -41,8 +41,8 @@ module.exports =
       dist:"/assets/vendor/font-awesome/font/fontawesome-webfont.ttf"
 
     "font-awesome-webfont.otf":
-      src :"/app/vendor/font-awesome/font/fontawesome-webfont.otf"
-      dist:"/assets/vendor/font-awesome/font/fontawesome-webfont.off"
+      src :"/app/vendor/font-awesome/font/fontawesome-webfont.woff"
+      dist:"/assets/vendor/font-awesome/font/fontawesome-webfont.woff"
 
     "font-awesome-fontawesome.otf":
       src :"/app/vendor/font-awesome/font/FontAwesome.otf"

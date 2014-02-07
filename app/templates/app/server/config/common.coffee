@@ -10,6 +10,10 @@ module.exports =
   db: enviroment.db
   clientDirectory: "/app/dist/client"
 
+  facebook:
+    clientID: enviroment.facebookAppID
+    clientSecret: enviroment.facebookSecretKey
+  
   # The secres should be set to a non-guessable string that
   # is used to compute a session hash
   sessionSecret: '8Ahs2j@ja'

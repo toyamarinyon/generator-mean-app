@@ -1,7 +1,7 @@
 "use strict"
 
-module.export =
+module.exports =
   hostname : "localhost"
-  db       : "mondodb://localhost/mean-dev"
+  db       : "mongodb://localhost/mean-dev"
   facebookAppID: "APP_ID"
   facebookSecretKey: "SECRET_KEY"

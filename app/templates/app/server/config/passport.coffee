@@ -4,9 +4,10 @@
 Module dependencies.
 ###
 
-User             = mongoose.model("User")
+mongoose         = require("mongoose")
 LocalStrategy    = require("passport-local").Strategy
 FacebookStrategy = require("passport-facebook").Strategy
+User             = mongoose.model("User")
 
 module.exports = (passport, config) ->
 
@@ -24,8 +25,8 @@ module.exports = (passport, config) ->
 
   # Use facebook strategy
   passport.use new FacebookStrategy
-    clientID     : config.facebookAppID
-    clientSecret : config.facebookSecretKey
+    clientID     : config.facebook.clientID
+    clientSecret : config.facebook.clientSecret
     callbackURL  : "http://#{config.hostname}/auth/facebook/callback"
   , (accessToken, refreshToken, profile, done) ->
     User.findOne

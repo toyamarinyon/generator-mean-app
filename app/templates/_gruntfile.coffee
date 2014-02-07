@@ -4,6 +4,7 @@ directoryConfig =
 
 fileConfig =
   clientConfig: "#{directoryConfig.appSrc}/client/config/application.coffee"
+  clientDependencies: "#{directoryConfig.appSrc}/client/config/dependencies.coffee"
 
 module.exports = (grunt) ->
   grunt.initConfig
@@ -38,7 +39,7 @@ module.exports = (grunt) ->
           pretty: true
           data: ->
             package: require("./package.json")
-            dependency: require("./app/src/client/config/dependencies")
+            dependency: require(fileConfig.clientDependencies)
         files: [
           expand: true
           cwd: directoryConfig.appSrc
@@ -90,6 +91,7 @@ module.exports = (grunt) ->
 
   grunt.registerTask 'build', [
     'config'
+    'dependency'
     'jade'
     'coffee'
     'sass'
@@ -104,3 +106,11 @@ module.exports = (grunt) ->
                NAME: "#{grunt.config('pkg').name}"
              """
     grunt.file.write fileConfig.clientConfig, config
+  grunt.registerTask 'dependency', 'client dependency resolution', ->
+    copyDependencyModules = (modules) ->
+      for i,module of modules
+        if module.src isnt undefined
+          grunt.file.copy(".#{module.src}", "#{directoryConfig.appDist}/client#{module.dist}")
+        else
+          copyDependencyModules(module)
+    copyDependencyModules(require(fileConfig.clientDependencies))
