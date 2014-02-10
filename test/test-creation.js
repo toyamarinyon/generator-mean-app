@@ -21,13 +21,33 @@ describe('mean-app generator', function () {
 
     it('creates expected files', function (done) {
         var expected = [
-            // add files you expect to exist here.
-            '.jshintrc',
-            '.editorconfig'
+            // config
+            'package.json',
+            'bower.json',
+            '.bowerrc',
+            'gruntfile.coffee',
+            // server
+            'app/src/server/server.coffee',
+            'app/src/server/config/common.coffee',
+            'app/src/server/config/express.coffee',
+            'app/src/server/config/passport.coffee',
+            'app/src/server/config/routes.coffee',
+            'app/src/server/config/sockets.coffee',
+            'app/src/server/config/env/development.coffee',
+            'app/src/server/config/env/test.coffee',
+            'app/src/server/config/env/production.coffee',
+            'app/src/server/models/index.coffee',
+            'app/src/server/models/user.coffee',
+            // client
+            'app/src/client/bootstrap.coffee',
+            'app/src/client/controllers/index.coffee',
+            'app/src/client/services/socket.coffee',
+            'app/src/client/index.jade'
         ];
 
         helpers.mockPrompt(this.app, {
-            'someOption': true
+            'appName': 'MochaTest',
+            'githubUser': 'toyamarinyon'
         });
         this.app.options['skip-install'] = true;
         this.app.run({}, function () {

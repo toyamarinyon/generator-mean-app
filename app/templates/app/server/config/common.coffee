@@ -9,6 +9,7 @@ module.exports =
   hostname: enviroment.hostname
   db: enviroment.db
   clientDirectory: "/app/dist/client"
+  vendorAssetsDirectory: "/vendor/assets"
 
   facebook:
     clientID: enviroment.facebookAppID
