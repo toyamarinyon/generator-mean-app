@@ -2,20 +2,22 @@ doctype html
 html(ng-app="#{name}")
   head
     title "#{name}"
-    link(rel='stylesheet', href='/lib/font-awesome/css/font-awesome.min.css')
-    link(rel='stylesheet', href='/lib/bootstrap/dist/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/font-awesome/css/font-awesome.min.css')
 
   body
 
     // Module dependencies.
-    each module in dependency.scripts
-      script(src="#{module.dist}")
-    
-    // Const
-    script(type='text/javascript', src='/config/application.js')
-    // Initializing
-    script(type='text/javascript', src='/bootstrap.js')
-    // Load services
-    script(type='text/javascript', src='/services/socket.js')
-    // Load controllers
-    script(type='text/javascript', src='/controllers/index.js')
+    script(src='/vendor/angular/angular.min.js')
+    script(src='/vendor/angular-animate/angular-animate.min.js')
+    script(src='/vendor/angular-cookies/angular-cookies.min.js')
+    script(src='/vendor/angular-resource/angular-resource.min.js')
+    script(src='/vendor/angular-route/angular-route.min.js')
+
+    // Const.
+    script(src='/config/application.js')
+    // Initializing.
+    script(src='/bootstrap.js')
+    // Load services.
+    script(src='/services/socket.js')
+    // Load controllers.
+    script(src='/controllers/index.js')

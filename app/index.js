@@ -38,6 +38,7 @@ MeanAppGenerator.prototype.askFor = function askFor() {
   var prompts = [{
     name: 'appName',
     message: 'What do you want to call your app?',
+    default: 'AwesomeApp'
   },{
     name: 'githubUser',
     message: 'Would you mind telling me your username on GitHub?',
@@ -89,6 +90,7 @@ MeanAppGenerator.prototype.copyConfigFile = function copyConfigFile() {
   this.template('_bower.json', 'bower.json');
   this.template('_bowerrc', '.bowerrc');
   this.template('_gruntfile.coffee', 'gruntfile.coffee');
+  this.template('_Gemfile', 'Gemfile');
 };
 
 MeanAppGenerator.prototype.copyServer = function copyServer() {

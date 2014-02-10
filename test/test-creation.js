@@ -26,6 +26,7 @@ describe('mean-app generator', function () {
             'bower.json',
             '.bowerrc',
             'gruntfile.coffee',
+            'Gemfile',
             // server
             'app/src/server/server.coffee',
             'app/src/server/config/common.coffee',
