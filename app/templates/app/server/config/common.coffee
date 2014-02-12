@@ -8,7 +8,7 @@ module.exports =
   port: process.env.PORT || 3000
   hostname: enviroment.hostname
   db: enviroment.db
-  clientDirectory: "/app/dist/client"
+  clientDirectory: "/client"
   vendorAssetsDirectory: "/vendor/assets"
 
   facebook:
