@@ -29,7 +29,7 @@ module.exports = (app, passport, db, config) ->
 
   app.configure ->
     # The cookieParser should be above session
-    app.use express.cookieParser
+    app.use express.cookieParser()
 
     # Request body paring middleware should be above methodOverride
     app.use express.urlencoded()
