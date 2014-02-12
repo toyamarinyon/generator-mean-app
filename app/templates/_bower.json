@@ -2,7 +2,7 @@
     "name": "<%= _.slugify(appName) %>",
     "version": "0.0.1",
     "dependencies": {
-        "angular": "1.2.8",
+        "angular": "latest",
         "angular-resource": "latest",
         "angular-cookies": "latest",
         "angular-mocks": "latest",
