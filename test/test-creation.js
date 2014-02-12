@@ -43,7 +43,8 @@ describe('mean-app generator', function () {
             'app/src/client/bootstrap.coffee',
             'app/src/client/controllers/index.coffee',
             'app/src/client/services/socket.coffee',
-            'app/src/client/index.jade'
+            'app/src/client/index.jade',
+            'app/src/client/views/index.jade'
         ];
 
         helpers.mockPrompt(this.app, {

@@ -1,10 +1,11 @@
-doctype html
+doctype
 html(ng-app="#{package.name}")
   head
     title "#{package.name}"
     link(rel='stylesheet', href='/font-awesome/css/font-awesome.min.css')
 
   body
+    div(ng-view)
 
     // Module dependencies.
     script(src='/angular/angular.min.js')
