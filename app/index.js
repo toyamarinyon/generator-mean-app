@@ -75,7 +75,7 @@ MeanAppGenerator.prototype.generateDirectoryHierarchy = function generateDirecto
   this.mkdir('app/src/client');
   this.mkdir('app/src/client/assets');
   this.mkdir('app/src/client/assets/images');
-  this.mkdir('app/src/client/assets/styles');
+  this.mkdir('app/src/client/assets/stylesheets');
   this.mkdir('app/src/client/config');
   this.mkdir('app/src/client/controllers');
   this.mkdir('app/src/client/controllers/concerns');
@@ -111,6 +111,7 @@ MeanAppGenerator.prototype.copyServer = function copyServer() {
 
 MeanAppGenerator.prototype.copyClient = function copyClient() {
   this.copy('app/client/bootstrap.coffee'              , 'app/src/client/bootstrap.coffee');
+  this.copy('app/client/assets/stylesheets/core.sass'  , 'app/src/client/assets/stylesheets/core.sass');
   this.copy('app/client/controllers/index.coffee'      , 'app/src/client/controllers/index.coffee');
   this.copy('app/client/services/socket.coffee'        , 'app/src/client/services/socket.coffee');
   this.copy('app/client/index.jade'                    , 'app/src/client/index.jade');
