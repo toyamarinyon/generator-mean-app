@@ -66,6 +66,8 @@ MeanAppGenerator.prototype.userInfo = function userInfo() {
 MeanAppGenerator.prototype.generateDirectoryHierarchy = function generateDirectoryHierarchy() {
   this.mkdir('app');
   this.mkdir('app/src');
+  this.mkdir('logs/server');
+  this.mkdir('logs/grunt');
   this.mkdir('app/src/server');
   this.mkdir('app/src/server/config');
   this.mkdir('app/src/server/controllers');

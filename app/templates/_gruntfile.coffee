@@ -93,7 +93,7 @@ module.exports = (grunt) ->
     'compass'
     'imagemin'
   ]
-  grunt.registerTask 'watching', ['watch']
+  grunt.registerTask 'watching', ['build','watch']
   grunt.registerTask 'default', ['build']
   grunt.registerTask 'config', 'build client config from package.json', ->
     grunt.file.delete fileConfig.clientConfig
