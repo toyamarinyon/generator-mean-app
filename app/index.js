@@ -86,11 +86,11 @@ MeanAppGenerator.prototype.generateDirectoryHierarchy = function generateDirecto
 };
 
 MeanAppGenerator.prototype.copyConfigFile = function copyConfigFile() {
-  this.template('_package.json', 'package.json');
-  this.template('_bower.json', 'bower.json');
-  this.template('_bowerrc', '.bowerrc');
-  this.template('_gruntfile.coffee', 'gruntfile.coffee');
-  this.template('_Gemfile', 'Gemfile');
+  this.template('_package.json'     , 'package.json');
+  this.template('_bower.json'       , 'bower.json');
+  this.template('_bowerrc'          , '.bowerrc');
+  this.template('_gruntfile.coffee' , 'gruntfile.coffee');
+  this.template('_Gemfile'          , 'Gemfile');
 };
 
 MeanAppGenerator.prototype.copyServer = function copyServer() {
