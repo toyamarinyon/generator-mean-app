@@ -46,6 +46,7 @@
     "grunt-contrib-jade"         : "latest",
     "grunt-contrib-coffee"       : "latest",
     "grunt-contrib-compass"      : "latest",
+    "grunt-concurrent"           : "latest",
     "grunt-contrib-imagemin"     : "latest",
     "grunt-nodemon"              : "latest",
     "grunt-concurrent"           : "latest",

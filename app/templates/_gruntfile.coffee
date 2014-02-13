@@ -8,30 +8,30 @@ fileConfig =
 
 module.exports = (grunt) ->
   grunt.initConfig
-    pkg: grunt.file.readJSON('package.json'),
+    pkg: grunt.file.readJSON("package.json"),
     watch:
       options:
         livereload: true
       jade:
         files:
-          directoryConfig.appSrc+'/**/*.jade'
+          directoryConfig.appSrc+"/**/*.jade"
         tasks:
-          'jade'
+          "jade"
       coffee:
         files:
-          directoryConfig.appSrc+'/**/*.coffee'
+          directoryConfig.appSrc+"/**/*.coffee"
         tasks:
-          'coffee'
+          "coffee"
       sass:
         files:
-          directoryConfig.appSrc+'/**/*.sass'
+          directoryConfig.appSrc+"/**/*.sass"
         tasks:
-          'sass'
+          "sass"
       image:
         files:
-          directoryConfig.appSrc+'/**/*.png'
+          directoryConfig.appSrc+"/**/*.png"
         tasks:
-          'imagemin'
+          "imagemin"
 
     jade:
       compile:
@@ -42,9 +42,9 @@ module.exports = (grunt) ->
         files: [
           expand: true
           cwd  : directoryConfig.appSrc
-          src  : '**/*.jade'
+          src  : "**/*.jade"
           dest : directoryConfig.appDist
-          ext  : '.html'
+          ext  : ".html"
         ]
 
     coffee:
@@ -54,9 +54,9 @@ module.exports = (grunt) ->
         files: [
           expand: true
           cwd  : directoryConfig.appSrc
-          src  : '**/*.coffee'
+          src  : "**/*.coffee"
           dest : directoryConfig.appDist
-          ext  : '.js'
+          ext  : ".js"
         ]
 
     compass:
@@ -74,31 +74,51 @@ module.exports = (grunt) ->
         files: [
           expand: true
           cwd: directoryConfig.appSrc
-          src: '**/*.png'
+          src: "**/*.png"
           dest: directoryConfig.appDist
         ]
+
+    nodemon:
+      dev:
+        options:
+          file: 'server.js'
+          args: []
+          ignoredFiles: ['public/**']
+          watchedExtensions: ['js']
+          nodeArgs: ['--debug']
+          delayTime: 1
+          env:
+              PORT: 3000
+          cwd: __dirname
+
+
+    concurrent:
+      tasks: ["nodemon", "watch"]
+      options:
+        logConcurrentOutput: true
     
 
-  grunt.loadNpmTasks 'grunt-contrib-watch'
-  grunt.loadNpmTasks 'grunt-contrib-jade'
-  grunt.loadNpmTasks 'grunt-contrib-coffee'
-  grunt.loadNpmTasks 'grunt-contrib-compass'
-  grunt.loadNpmTasks 'grunt-contrib-imagemin'
-  grunt.loadNpmTasks 'grunt-contrib-watch'
+  grunt.loadNpmTasks "grunt-contrib-watch"
+  grunt.loadNpmTasks "grunt-contrib-jade"
+  grunt.loadNpmTasks "grunt-contrib-coffee"
+  grunt.loadNpmTasks "grunt-contrib-compass"
+  grunt.loadNpmTasks "grunt-contrib-imagemin"
+  grunt.loadNpmTasks "grunt-contrib-watch"
+  grunt.loadNpmTasks "grunt-concurrent"
+  grunt.loadNpmTasks "grunt-nodemon"
 
-  grunt.registerTask 'build', [
-    'config'
-    'jade'
-    'coffee'
-    'compass'
-    'imagemin'
+  grunt.registerTask "build", [
+    "config"
+    "jade"
+    "coffee"
+    "compass"
+    "imagemin"
   ]
-  grunt.registerTask 'watching', ['build','watch']
-  grunt.registerTask 'default', ['build']
-  grunt.registerTask 'config', 'build client config from package.json', ->
+  grunt.registerTask "default", ["build", "concurrent"]
+  grunt.registerTask "config", "build client config from package.json", ->
     grunt.file.delete fileConfig.clientConfig
     config = """
              APPLICATION =
-               NAME: "#{grunt.config('pkg').name}"
+               NAME: "#{grunt.config("pkg").name}"
              """
     grunt.file.write fileConfig.clientConfig, config
