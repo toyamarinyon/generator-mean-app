@@ -80,8 +80,8 @@ module.exports = (grunt) ->
 
     nodemon:
       dev:
+        script: 'server.js'
         options:
-          file: 'server.js'
           args: []
           ignoredFiles: ['public/**']
           watchedExtensions: ['js']
@@ -89,7 +89,7 @@ module.exports = (grunt) ->
           delayTime: 1
           env:
               PORT: 3000
-          cwd: __dirname
+          cwd: "#{__dirname}/app/dist/server"
 
 
     concurrent:
