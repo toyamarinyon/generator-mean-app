@@ -1,10 +1,10 @@
 directoryConfig =
-  appSrc: 'app/src'
-  appDist: 'app/dist'
+  appSrc         : "app/src"
+  appDist        : "app/dist"
+  appStyleSheets : "/client/assets/stylesheets"
 
 fileConfig =
   clientConfig: "#{directoryConfig.appSrc}/client/config/application.coffee"
-  clientDependencies: "#{directoryConfig.appSrc}/client/config/dependencies.coffee"
 
 module.exports = (grunt) ->
   grunt.initConfig
@@ -41,10 +41,10 @@ module.exports = (grunt) ->
             package: require("./package.json")
         files: [
           expand: true
-          cwd: directoryConfig.appSrc
-          src: '**/*.jade'
-          dest: directoryConfig.appDist
-          ext: '.html'
+          cwd  : directoryConfig.appSrc
+          src  : '**/*.jade'
+          dest : directoryConfig.appDist
+          ext  : '.html'
         ]
 
     coffee:
@@ -53,21 +53,19 @@ module.exports = (grunt) ->
       compile:
         files: [
           expand: true
-          cwd: directoryConfig.appSrc
-          src: '**/*.coffee'
-          dest: directoryConfig.appDist
-          ext: '.js'
+          cwd  : directoryConfig.appSrc
+          src  : '**/*.coffee'
+          dest : directoryConfig.appDist
+          ext  : '.js'
         ]
 
-    sass:
+    compass:
       compile:
-        files: [
-          expand: true
-          cwd: directoryConfig.appSrc
-          src: '**/*.sass'
-          dest: directoryConfig.appDist
-          ext: '.css'
-        ]
+        options:
+          require : "bootstrap-sass"
+          bundleExec : true
+          sassDir : "#{directoryConfig.appSrc}#{directoryConfig.appStyleSheets}"
+          cssDir  : "#{directoryConfig.appDist}#{directoryConfig.appStyleSheets}"
 
     imagemin:
       png:
@@ -84,7 +82,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-watch'
   grunt.loadNpmTasks 'grunt-contrib-jade'
   grunt.loadNpmTasks 'grunt-contrib-coffee'
-  grunt.loadNpmTasks 'grunt-contrib-sass'
+  grunt.loadNpmTasks 'grunt-contrib-compass'
   grunt.loadNpmTasks 'grunt-contrib-imagemin'
   grunt.loadNpmTasks 'grunt-contrib-watch'
 
@@ -92,7 +90,7 @@ module.exports = (grunt) ->
     'config'
     'jade'
     'coffee'
-    'sass'
+    'compass'
     'imagemin'
   ]
   grunt.registerTask 'watching', ['watch']

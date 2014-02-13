@@ -91,6 +91,7 @@ MeanAppGenerator.prototype.copyConfigFile = function copyConfigFile() {
   this.template('_bowerrc'          , '.bowerrc');
   this.template('_gruntfile.coffee' , 'gruntfile.coffee');
   this.template('_Gemfile'          , 'Gemfile');
+  this.template('_config.rb'        , 'config.rb');
 };
 
 MeanAppGenerator.prototype.copyServer = function copyServer() {
