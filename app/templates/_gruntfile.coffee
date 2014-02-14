@@ -3,9 +3,6 @@ directoryConfig =
   appDist        : "app/dist"
   appStyleSheets : "/client/assets/stylesheets"
 
-fileConfig =
-  clientConfig: "#{directoryConfig.appSrc}/client/config/application.coffee"
-
 module.exports = (grunt) ->
   grunt.initConfig
     pkg: grunt.file.readJSON("package.json"),
@@ -37,8 +34,6 @@ module.exports = (grunt) ->
       compile:
         options:
           pretty: true
-          data: ->
-            package: require("./package.json")
         files: [
           expand: true
           cwd  : directoryConfig.appSrc
@@ -108,17 +103,9 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-nodemon"
 
   grunt.registerTask "build", [
-    "config"
     "jade"
     "coffee"
     "compass"
     "imagemin"
   ]
   grunt.registerTask "default", ["build", "concurrent"]
-  grunt.registerTask "config", "build client config from package.json", ->
-    grunt.file.delete fileConfig.clientConfig
-    config = """
-             APPLICATION =
-               NAME: "#{grunt.config("pkg").name}"
-             """
-    grunt.file.write fileConfig.clientConfig, config

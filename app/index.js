@@ -66,8 +66,6 @@ MeanAppGenerator.prototype.userInfo = function userInfo() {
 MeanAppGenerator.prototype.generateDirectoryHierarchy = function generateDirectoryHierarchy() {
   this.mkdir('app');
   this.mkdir('app/src');
-  this.mkdir('logs/server');
-  this.mkdir('logs/grunt');
   this.mkdir('app/src/server');
   this.mkdir('app/src/server/config');
   this.mkdir('app/src/server/controllers');
@@ -94,6 +92,7 @@ MeanAppGenerator.prototype.copyConfigFile = function copyConfigFile() {
   this.template('_gruntfile.coffee' , 'gruntfile.coffee');
   this.template('_Gemfile'          , 'Gemfile');
   this.template('_config.rb'        , 'config.rb');
+  this.template('_gitignore'        , '.gitignore');
 };
 
 MeanAppGenerator.prototype.copyServer = function copyServer() {
