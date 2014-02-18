@@ -28,6 +28,7 @@ describe('mean-app generator', function () {
             'gruntfile.coffee',
             'Gemfile',
             'config.rb',
+            '.gitignore',
             // server
             'app/src/server/server.coffee',
             'app/src/server/config/common.coffee',
