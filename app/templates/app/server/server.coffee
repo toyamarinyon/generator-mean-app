@@ -32,13 +32,10 @@ require("./models/user")
 # Bootstrap passport config
 require("./config/passport")(passport, config)
 
-# Bootstrap routes
-require("./config/routes")
-require("./config/sockets")
-
 # Create Express
 app = express()
 require("./config/express")(app, passport, db, config)
+require("./config/routes")(app)
 server = require("http").createServer(app)
 
 # Hook Socket.io into Express

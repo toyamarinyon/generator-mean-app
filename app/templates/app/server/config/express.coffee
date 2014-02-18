@@ -72,12 +72,13 @@ module.exports = (app, passport, db, config) ->
 
       # Error page
       res.status 500
-      res.render "500",
-        error: err.stack
+      res.send "500"
+      console.log err.stack
 
     # Assume 404 since no middleware responded
     app.use (req, res, next) ->
       res.status 404
-      res.render "404",
+      res.send "404"
+      console.log
         url: req.originalUrl
         error: "Not found"

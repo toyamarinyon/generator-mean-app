@@ -4,10 +4,14 @@ html(ng-app="#{package.name}")
     title "#{package.name}"
     link(rel='stylesheet', href='/font-awesome/css/font-awesome.min.css')
     link(rel='stylesheet', href='/assets/stylesheets/core.css')
+    meta(name="viewport", content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1")
 
   body
     div(ng-view)
 
+    // Socket.io
+    script(src="/socket.io/socket.io.js")
+      
     // Module dependencies.
     script(src='/angular/angular.min.js')
     script(src='/angular-animate/angular-animate.min.js')
@@ -15,8 +19,6 @@ html(ng-app="#{package.name}")
     script(src='/angular-resource/angular-resource.min.js')
     script(src='/angular-route/angular-route.min.js')
 
-    // Const.
-    script(src='/config/application.js')
     // Initializing.
     script(src='/bootstrap.js')
     // Load services.

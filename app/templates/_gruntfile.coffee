@@ -3,9 +3,6 @@ directoryConfig =
   appDist        : "app/dist"
   appStyleSheets : "/client/assets/stylesheets"
 
-fileConfig =
-  clientConfig: "#{directoryConfig.appSrc}/client/config/application.coffee"
-
 module.exports = (grunt) ->
   grunt.initConfig
     pkg: grunt.file.readJSON("package.json"),
@@ -22,11 +19,11 @@ module.exports = (grunt) ->
           directoryConfig.appSrc+"/**/*.coffee"
         tasks:
           "coffee"
-      sass:
+      compass:
         files:
           directoryConfig.appSrc+"/**/*.sass"
         tasks:
-          "sass"
+          "compass"
       image:
         files:
           directoryConfig.appSrc+"/**/*.png"
@@ -37,8 +34,6 @@ module.exports = (grunt) ->
       compile:
         options:
           pretty: true
-          data: ->
-            package: require("./package.json")
         files: [
           expand: true
           cwd  : directoryConfig.appSrc
@@ -93,9 +88,14 @@ module.exports = (grunt) ->
 
 
     concurrent:
-      tasks: ["nodemon", "watch"]
-      options:
-        logConcurrentOutput: true
+      dev:
+        tasks: ["nodemon", "watch"]
+        options:
+          logConcurrentOutput: true
+      build:
+        tasks: ["jade", "coffee", "compass", "imagemin"]
+        options:
+          logConcurrentOutput: true
     
 
   grunt.loadNpmTasks "grunt-contrib-watch"
@@ -107,18 +107,5 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-concurrent"
   grunt.loadNpmTasks "grunt-nodemon"
 
-  grunt.registerTask "build", [
-    "config"
-    "jade"
-    "coffee"
-    "compass"
-    "imagemin"
-  ]
-  grunt.registerTask "default", ["build", "concurrent"]
-  grunt.registerTask "config", "build client config from package.json", ->
-    grunt.file.delete fileConfig.clientConfig
-    config = """
-             APPLICATION =
-               NAME: "#{grunt.config("pkg").name}"
-             """
-    grunt.file.write fileConfig.clientConfig, config
+  grunt.registerTask "build", ["concurrent:build"]
+  grunt.registerTask "default", ["build", "concurrent:dev"]
