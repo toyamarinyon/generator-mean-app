@@ -43,6 +43,8 @@ describe('mean-app generator', function () {
             'app/src/server/models/user.coffee',
             // client
             'app/src/client/assets/stylesheets/core.sass',
+            'app/src/client/assets/stylesheets/lib/_twitter-bootstrap.sass',
+            'app/src/client/assets/stylesheets/lib/_zurui.sass',
             'app/src/client/bootstrap.coffee',
             'app/src/client/controllers/index.coffee',
             'app/src/client/services/socket.coffee',

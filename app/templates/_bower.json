@@ -8,7 +8,6 @@
         "angular-mocks": "latest",
         "angular-route": "latest",
         "angular-animate": "latest",
-        "bootstrap-sass-official": "latest",
         "font-awesome": "3.0.0"
     }
 }
